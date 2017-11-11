@@ -1,1 +1,5 @@
 *.swp
+.*
+service_python/.env/
+service_python/dump.rdb
+*.log
