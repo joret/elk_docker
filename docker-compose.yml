@@ -3,7 +3,6 @@ version: '2'
 services:
   kibana:
     image: docker.elastic.co/kibana/kibana:5.6.4
-    # environment:
     depends_on:
       - elasticsearch
     ports:
@@ -29,11 +28,11 @@ services:
   logstash:
       #build: logstash/
     image: docker.elastic.co/logstash/logstash:5.6.3
-    volumes:
-      - ./logstash/config/logstash.conf:/usr/share/logstash/config/logstash.conf
-        #- ./logstash/pipeline:/usr/share/logstash/pipeline
+    #volumes:
+    #  - ./logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
       - "5000:5000"
+      - "5044:5044"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
