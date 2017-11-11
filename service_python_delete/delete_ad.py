@@ -11,10 +11,12 @@ while True:
     key = '{}:{}'.format(user_id, ad_id)
     exists = redis_con.get(key)
     if exists != None:
-        date = 'Timestamp:{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        date = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
+        log_json = {'service':'delete', 'date':date, 'ad_id': key}
         res = redis_con.delete(exists)
-        print(str(res))
-        log.write('{} Deleated ad_id:{}\n'.format(date, key))
+        print(str(log_json))
+        #log.write('{} ad_id:{}\n'.format(date, key))
+        log.write(str(log_json) + '\n')
         log.flush()
     else:
         print('Not found:' + str(key))
