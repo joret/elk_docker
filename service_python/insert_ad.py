@@ -14,7 +14,7 @@ while True:
     date = '{:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())
     log_json = {'service':'ad', 'date':date, 'ad_id': key}
     redis_con.set(key, 'text' + str(ad_id))
-    print('Ad:{} inserted'.format(key))
+    print(log_json)
     log.write(str(log_json) + '\n')
     log.flush()
     time.sleep(1)

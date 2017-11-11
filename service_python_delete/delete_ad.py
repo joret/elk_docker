@@ -15,12 +15,10 @@ while True:
         log_json = {'service':'delete', 'date':date, 'ad_id': key}
         res = redis_con.delete(exists)
         print(str(log_json))
-        #log.write('{} ad_id:{}\n'.format(date, key))
         log.write(str(log_json) + '\n')
         log.flush()
-    else:
-        print('Not found:' + str(key))
+#    else:
+#        print('Not found:' + str(key))
     time.sleep(1)
-#redis_con.get('foo')
 
 
